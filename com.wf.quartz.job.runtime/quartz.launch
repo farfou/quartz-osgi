@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<launchConfiguration type="org.eclipse.pde.ui.EquinoxLauncher">
+<booleanAttribute key="append.args" value="true"/>
+<booleanAttribute key="automaticAdd" value="true"/>
+<booleanAttribute key="automaticValidate" value="false"/>
+<stringAttribute key="bootstrap" value=""/>
+<stringAttribute key="checked" value="[NONE]"/>
+<booleanAttribute key="clearConfig" value="false"/>
+<stringAttribute key="configLocation" value="${workspace_loc}/.metadata/.plugins/org.eclipse.pde.core/quartz"/>
+<booleanAttribute key="default" value="true"/>
+<booleanAttribute key="default_auto_start" value="true"/>
+<intAttribute key="default_start_level" value="4"/>
+<stringAttribute key="deselected_workspace_plugins" value="com.wf.cm.api,com.wf.cm.client,com.wf.cm.test,com.wf.cm.test2,com.wf.controller.base,com.wf.controller.core,com.wf.controller.student,com.wf.dao.base,com.wf.dao.core,com.wf.dao.core.commands,com.wf.dao.student,com.wf.dao.student.commands,com.wf.datasource.api,com.wf.datasource.db.api,com.wf.datasource.hibernate.api,com.wf.datasource.main,com.wf.ds.db.inmemdb,com.wf.inmem.db.command,com.wf.log,com.wf.log.command,com.wf.log.console,com.wf.log.db,com.wf.log.file,com.wf.log.test,com.wf.model,com.wf.model.api,com.wf.model.commands,com.wf.model.conc,com.wf.model.mysql,com.wf.view.base,gov.tubitak.yte.authentication.controller.bundle,gov.tubitak.yte.authentication.model.bundle,gov.tubitak.yte.authentication.service.bundle,gov.tubitak.yte.authentication.view.bundle,gov.tubitak.yte.kernel.controller.bundle,gov.tubitak.yte.kernel.model.bundle,gov.tubitak.yte.kernel.service.bundle,gov.tubitak.yte.kernel.view.bundle,gov.tubitak.yte.mainboard.main.bundle,gov.tubitak.yte.mainboard.manager.bundle,gov.tubitak.yte.reference.controller.bundle,gov.tubitak.yte.reference.model.bundle,gov.tubitak.yte.reference.service.bundle,gov.tubitak.yte.reference.view.bundle,osgi.vaadin.theme"/>
+<booleanAttribute key="includeOptional" value="true"/>
+<booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+<stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+<stringAttribute key="org.eclipse.jdt.launching.PROGRAM_ARGUMENTS" value="-os ${target.os} -ws ${target.ws} -arch ${target.arch} -nl ${target.nl} -consoleLog -console"/>
+<stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.eclipse.pde.ui.workbenchClasspathProvider"/>
+<stringAttribute key="org.eclipse.jdt.launching.VM_ARGUMENTS" value="-Declipse.ignoreApp=true -Dosgi.noShutdown=true"/>
+<stringAttribute key="pde.version" value="3.3"/>
+<booleanAttribute key="show_selected_only" value="false"/>
+<stringAttribute key="target_bundles" value="com.springsource.org.apache.commons.collections@1:default,com.springsource.org.apache.commons.logging@1:default,com.springsource.org.quartz@1:default,org.apache.felix.bundlerepository@1:default,org.apache.felix.eventadmin@1:default,org.apache.felix.gogo.command@1:default,org.apache.felix.gogo.runtime@1:default,org.eclipse.osgi.services@1:default,org.eclipse.osgi@-1:true,osgi.core@1:default"/>
+<booleanAttribute key="tracing" value="false"/>
+<booleanAttribute key="useCustomFeatures" value="false"/>
+<booleanAttribute key="useDefaultConfigArea" value="true"/>
+<stringAttribute key="workspace_bundles" value="com.wf.quartz.job.cron@default:default,com.wf.quartz.job.service@default:default,com.wf.quartz.job.simple@default:default"/>
+</launchConfiguration>

@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Simple
+Bundle-SymbolicName: com.wf.quartz.job.simple
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: com.wf.quartz.job.simple.internals.Activator
+Bundle-Vendor: WF
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Import-Package: com.wf.quartz.job,
+ com.wf.quartz.job.activator,
+ org.osgi.framework;version="1.3.0",
+ org.quartz;version="1.6.2"
+Bundle-ActivationPolicy: lazy
