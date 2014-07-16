@@ -2,9 +2,9 @@ package com.wf.quartz.task.api;
 
 import com.wf.quartz.task.context.TaskContext;
 
-public abstract class AbstractSingleTask implements SingleTask {
+public abstract class AbstractTask implements Task {
 
-	public AbstractSingleTask() {
+	public AbstractTask() {
 		
 	}
 

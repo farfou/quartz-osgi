@@ -2,7 +2,7 @@ package com.wf.quartz.task.api;
 
 import com.wf.quartz.task.context.TaskContext;
 
-public interface SingleTask {
+public interface Task {
 
 	public String getName();
 
