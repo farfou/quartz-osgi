@@ -8,9 +8,9 @@ import org.quartz.JobExecutionException;
 import org.quartz.SimpleTrigger;
 import org.quartz.Trigger;
 
-import com.wf.quartz.job.UniforceJobHandler;
+import com.wf.quartz.job.QuartzJob;
 
-public class SimpleJob implements UniforceJobHandler {
+public class SimpleJob implements QuartzJob {
 
 	
 	public String getName() {

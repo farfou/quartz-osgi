@@ -3,15 +3,15 @@ package com.wf.quartz.job.service.internals;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 
-import com.wf.quartz.job.UniforceJobHandler;
+import com.wf.quartz.job.QuartzJob;
 
-public class UniforceJobHandlerWrapper {
+public class QuartzJobWrapper {
 
-	private ServiceReference<UniforceJobHandler> reference = null;
-	private UniforceJobHandler handler = null;
+	private ServiceReference<QuartzJob> reference = null;
+	private QuartzJob handler = null;
 	private BundleContext context = null;
 
-	public UniforceJobHandlerWrapper(ServiceReference<UniforceJobHandler> reference, BundleContext context) {
+	public QuartzJobWrapper(ServiceReference<QuartzJob> reference, BundleContext context) {
 		this.reference = reference;
 		this.context = context;
 	}
@@ -30,7 +30,7 @@ public class UniforceJobHandlerWrapper {
 		}
 	}
 
-	public UniforceJobHandler getHandler() {
+	public QuartzJob getHandler() {
 		synchronized (this) {
 			// if we already have a handler, return it
 			if (handler != null) {
@@ -39,7 +39,7 @@ public class UniforceJobHandlerWrapper {
 		}
 
 		// we don't have the handler, so lets get it outside the sync region
-		UniforceJobHandler tempHandler = null;
+		QuartzJob tempHandler = null;
 		try {
 			tempHandler = context.getService(reference);
 		} catch (IllegalStateException e) {

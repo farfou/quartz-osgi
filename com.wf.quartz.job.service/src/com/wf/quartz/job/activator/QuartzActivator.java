@@ -4,19 +4,19 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 
-import com.wf.quartz.job.UniforceJobHandler;
+import com.wf.quartz.job.QuartzJob;
 
 public abstract class QuartzActivator implements BundleActivator {
 
-	private UniforceJobHandler job = null;
-	private ServiceRegistration<UniforceJobHandler> registerService;
+	private QuartzJob job = null;
+	private ServiceRegistration<QuartzJob> registerService;
 
 	public void start(BundleContext bundleContext) throws Exception {
 		job = getJob();
-		registerService = bundleContext.registerService(UniforceJobHandler.class, job, null);
+		registerService = bundleContext.registerService(QuartzJob.class, job, null);
 	}
 
-	public abstract UniforceJobHandler getJob();
+	public abstract QuartzJob getJob();
 
 	public void stop(BundleContext bundleContext) throws Exception {
 		if (job != null) {

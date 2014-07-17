@@ -12,19 +12,19 @@ import org.quartz.SchedulerException;
 import org.quartz.SchedulerListener;
 import org.quartz.impl.StdSchedulerFactory;
 
-import com.wf.quartz.job.UniforceJobHandler;
+import com.wf.quartz.job.QuartzJob;
 import com.wf.quartz.job.WFSchedulerAdmin;
 
-public class WFSchedulerImpl extends ServiceTracker<UniforceJobHandler, UniforceJobHandlerWrapper> implements WFSchedulerAdmin {
+public class WFSchedulerImpl extends ServiceTracker<QuartzJob, QuartzJobWrapper> implements WFSchedulerAdmin {
 
 	private Scheduler scheduler = null;
 	private EventAdmin eventAdmin = null;
 	private SchedulerListener schedulerListener = null;
-	private List<UniforceJobHandlerWrapper> jobs = null;
+	private List<QuartzJobWrapper> jobs = null;
 
 	public WFSchedulerImpl(BundleContext context) {
-		super(context, UniforceJobHandler.class.getName(), null);
-		jobs = new ArrayList<UniforceJobHandlerWrapper>();
+		super(context, QuartzJob.class.getName(), null);
+		jobs = new ArrayList<QuartzJobWrapper>();
 	}
 
 	public void start() {
@@ -74,9 +74,9 @@ public class WFSchedulerImpl extends ServiceTracker<UniforceJobHandler, Uniforce
 	}
 
 	@Override
-	public UniforceJobHandlerWrapper addingService(ServiceReference<UniforceJobHandler> reference) {
+	public QuartzJobWrapper addingService(ServiceReference<QuartzJob> reference) {
 		System.out.println("servis ekleniyor");
-		UniforceJobHandlerWrapper wrapper = new UniforceJobHandlerWrapper(reference, context);
+		QuartzJobWrapper wrapper = new QuartzJobWrapper(reference, context);
 		synchronized (this) {
 			bucket(wrapper);
 		}
@@ -84,7 +84,7 @@ public class WFSchedulerImpl extends ServiceTracker<UniforceJobHandler, Uniforce
 	}
 
 	@Override
-	public void modifiedService(ServiceReference<UniforceJobHandler> reference, UniforceJobHandlerWrapper service) {
+	public void modifiedService(ServiceReference<QuartzJob> reference, QuartzJobWrapper service) {
 		synchronized (this) {
 			unbucket(service);
 			bucket(service);
@@ -93,15 +93,15 @@ public class WFSchedulerImpl extends ServiceTracker<UniforceJobHandler, Uniforce
 		service.flush(); // needs to be called outside sync region
 	}
 
-	public void removedService(ServiceReference<UniforceJobHandler> reference, UniforceJobHandlerWrapper service) {
+	public void removedService(ServiceReference<QuartzJob> reference, QuartzJobWrapper service) {
 		synchronized (this) {
 			unbucket(service);
 		}
 		service.flush(); // needs to be called outside sync region
 	}
 
-	private void bucket(UniforceJobHandlerWrapper wrapper) {
-		UniforceJobHandler handler = wrapper.getHandler();
+	private void bucket(QuartzJobWrapper wrapper) {
+		QuartzJob handler = wrapper.getHandler();
 		if (handler != null) {
 			if (!jobExists(handler)) {
 				try {
@@ -114,8 +114,8 @@ public class WFSchedulerImpl extends ServiceTracker<UniforceJobHandler, Uniforce
 		}
 	}
 
-	private void unbucket(UniforceJobHandlerWrapper wrapper) {
-		UniforceJobHandler handler = wrapper.getHandler();
+	private void unbucket(QuartzJobWrapper wrapper) {
+		QuartzJob handler = wrapper.getHandler();
 		if (handler != null) {
 			if (jobExists(handler)) {
 				try {
@@ -128,7 +128,7 @@ public class WFSchedulerImpl extends ServiceTracker<UniforceJobHandler, Uniforce
 		}
 	}
 
-	private boolean jobExists(UniforceJobHandler handler) {
+	private boolean jobExists(QuartzJob handler) {
 		boolean result = false;
 		String theJobName = handler.getName();
 		String theJobGroupName = handler.getGroupName();
