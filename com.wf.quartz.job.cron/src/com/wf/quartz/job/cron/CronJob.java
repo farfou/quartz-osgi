@@ -5,17 +5,31 @@ import java.util.Date;
 
 import org.quartz.CronTrigger;
 import org.quartz.JobDetail;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
 import org.quartz.Trigger;
 
-import com.wf.quartz.job.UniforceJobHandler;
+import com.wf.quartz.job.task.DummyMultipleTask;
+import com.wf.quartz.task.api.MultipleTask;
+import com.wf.quartz.task.api.Task;
+import com.wf.quartz.task.context.TaskContext;
+import com.wf.quartz.task.job.ScheduledTask;
 
-public class CronJob implements UniforceJobHandler {
+public class CronJob extends ScheduledTask {
 
-	@Override
-	public String getName() {
-		return "simpleCronJob";
+	private static MultipleTask task = new DummyMultipleTask(new MultipleTask() {
+
+		@Override
+		public String getName() {
+			return "InnerTask";
+		}
+
+		@Override
+		public void execute(TaskContext context) throws Exception {
+			System.out.println(getName() + " executing");
+		}
+	});
+
+	public CronJob() {
+		super(task);
 	}
 
 	@Override
@@ -48,7 +62,9 @@ public class CronJob implements UniforceJobHandler {
 	}
 
 	@Override
-	public void execute(JobExecutionContext context) throws JobExecutionException {
-		System.out.println("[" + this.getClass().getSimpleName() + "] I am the simplest job for quartz");
+	public Task getTask() {
+
+		return task;
 	}
+
 }

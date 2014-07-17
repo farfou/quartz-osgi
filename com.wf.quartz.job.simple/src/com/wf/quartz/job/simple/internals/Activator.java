@@ -2,7 +2,7 @@ package com.wf.quartz.job.simple.internals;
 
 import org.osgi.framework.BundleContext;
 
-import com.wf.quartz.job.QuartzJob;
+import com.wf.quartz.job.UniforceJobHandler;
 import com.wf.quartz.job.activator.QuartzActivator;
 import com.wf.quartz.job.simple.SimpleJob;
 
@@ -25,7 +25,7 @@ public class Activator extends QuartzActivator {
 	}
 
 	@Override
-	public QuartzJob getJob() {
+	public UniforceJobHandler getJob() {
 		return new SimpleJob();
 	}
 

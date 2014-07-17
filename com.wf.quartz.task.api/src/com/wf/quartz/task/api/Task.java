@@ -2,18 +2,37 @@ package com.wf.quartz.task.api;
 
 import com.wf.quartz.task.context.TaskContext;
 
-public interface Task {
+public abstract class Task {
 
-	public String getName();
+	public Task() {
+		
+	}
 
-	public String print();
+	public abstract String getName();
 
-	public void start() throws Exception;
+	public String print() {
+		return getName();
+	}
 
-	public void execute(TaskContext context) throws Exception;
+	public void start() throws Exception {
+		TaskContext context = null;
+		try {
+			context = TaskContext.newContext();
+			execute(context);
+			afterExecuted(context);
+			afterTaskCompleted(context);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public abstract void execute(TaskContext context) throws Exception;
 
-	public void afterExecuted(TaskContext context);
+	public void afterExecuted(TaskContext context) {
 
-	public void afterTaskCompleted(TaskContext context);
+	}
 
+	public void afterTaskCompleted(TaskContext context) {
+
+	}
 }
